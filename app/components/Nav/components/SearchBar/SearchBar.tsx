@@ -1,7 +1,7 @@
-import React from 'react'
 import { LuSearch } from "react-icons/lu";
 
 const SearchBar = () => {
+
   return (
     <div className='flex-1 h-full p-4 relative'>
       <input placeholder='Search products' className='border-2 rounded-full w-full h-full px-4'/>
