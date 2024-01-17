@@ -7,7 +7,7 @@ import Logo from './components/Logo';
 import CartButton from './components/CartButton';
 import LowerNav from './components/LowerNav';
 
-const Nav = () => {
+const MajorNav = () => {
   const [isAtTop, setIsAtTop] = useState(true);
 
   useEffect(() => {
@@ -37,4 +37,4 @@ const Nav = () => {
   )
 }
 
-export default Nav;
+export default MajorNav;

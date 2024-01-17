@@ -1,5 +1,5 @@
 import './globals.css'
-import Nav from './components/Nav';
+import MajorNav from '../components/MajorNav';
 
 
 // font family is:  bulo
@@ -11,7 +11,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Nav />
+        <MajorNav />
         {children}
       </body>
     </html>

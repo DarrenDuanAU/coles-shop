@@ -3,11 +3,11 @@ import { LuLayoutGrid } from "react-icons/lu";
 
 const MoreFromColesButton = () => {
   return (
-    <div className='flex flex-col items-center'>
+    <button className='flex flex-col items-center hover:bg-slate-100 p-2 hover:underline'>
       <LuLayoutGrid size='20'/>
       <span className='text-sm'>More from Coles</span>
      
-    </div>
+    </button>
   )
 }
 
