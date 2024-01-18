@@ -40,7 +40,7 @@ const SectionNav = () => {
   return (
     <div className='flex'>
       {SECTIONS.map((section) => (
-        <div  key={section.name} className='flex flex-col justify-center items-center p-2'>
+        <div  key={section.name} className='flex flex-col justify-center items-center bg-[#fefaf0] py-4 px-8 hover:underline'>
           <img src={section.image.src} alt="boughtBefore" className='w-[80px] flex-shrink-0'/>
           <span className='text-sm text-center'>{section.name}</span>
         </div>

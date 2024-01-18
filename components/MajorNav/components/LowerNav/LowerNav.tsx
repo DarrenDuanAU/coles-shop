@@ -2,6 +2,22 @@
 
 import React, { useEffect, useState } from 'react'
 import DropDownButton from './components/DropDownButton/DropDownButton';
+import { LuMilk } from "react-icons/lu";
+
+export interface tab {
+  name: string;
+  href: string;
+}
+
+const TABS : tab[]= [
+  {name: 'Bought before', href: '/'},
+  {name: 'Specials', href: '/'},
+  {name: 'Catalogues', href: '/'},
+  {name: 'Offers & promotions', href: '/'},
+  {name: 'Recipes & inspiration', href: '/'},
+  {name: 'Coles plus', href: '/'},
+  {name: 'Contact us', href: '/'},
+]
 
 const LowerNav = () => {
   const [windowWidth, setWindowWidth] = useState<number>(
@@ -16,31 +32,26 @@ const LowerNav = () => {
       window.removeEventListener('resize', updateWindowWidth);
     };
   }, []);
-
-  const TABS = [
-    {name: 'Bought before', href: '/'},
-    {name: 'Specials', href: '/'},
-    {name: 'Catalogues', href: '/'},
-    {name: 'Offers&promotions', href: '/'},
-    {name: 'Recipes&inspiration', href: '/'},
-    {name: 'coles plus', href: '/'},
-    {name: 'contact us', href: '/'},
-  ]
-
+  const ShortNavItemsNum = 3;
+  
   return (
-    <div className='flex justify-between px-8 py-2 ease-in-out duration-600'>
-      <div className='space-x-2'>
+    <div className='flex justify-between px-8 py-2'>
+      <div className='flex gap-2'>
         {/* {windowWidth} */}
+        <button className='flex items-center gap-2 p-4 rounded hover:bg-slate-100'>
+          <LuMilk size='20' color='#e81c24'/>
+          <span className='font-semibold'>Shop products</span>
+        </button>
         {windowWidth > 1300 &&
           TABS.map((tab) => (
           <button key={tab.name} className='p-4 rounded hover:bg-slate-100'>{tab.name}</button>
         ))}
         {windowWidth <= 1300 &&
         <div className='flex'>
-          {TABS.slice(0,3).map((tab) => (
+          {TABS.slice(0,ShortNavItemsNum).map((tab) => (
               <button key={tab.name} className='p-4 rounded hover:bg-slate-100'>{tab.name}</button>
             ))}
-          <DropDownButton />
+          <DropDownButton items={TABS.slice(ShortNavItemsNum)}/>
         </div>
         }
       </div>

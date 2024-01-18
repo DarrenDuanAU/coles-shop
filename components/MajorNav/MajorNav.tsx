@@ -6,15 +6,14 @@ import SearchBar from './components/SearchBar';
 import Logo from './components/Logo';
 import CartButton from './components/CartButton';
 import LowerNav from './components/LowerNav';
+import classNames from 'classnames';
 
 const MajorNav = () => {
-  const [isAtTop, setIsAtTop] = useState(true);
-
+  const [distToTop, setDistToTop] = useState(0);
+  const threshold = 50;
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const threshold = 50;
-      setIsAtTop(scrollTop < threshold);
+      setDistToTop(window.scrollY || document.documentElement.scrollTop);
     };
     window.addEventListener('scroll', handleScroll);
     return () => {
@@ -23,16 +22,21 @@ const MajorNav = () => {
   }, []); 
   
   return (
-    <div className='fixed w-full border-b'>
-      <div className='flex w-full h-20 items-center gap-6 px-6'>
+    <div className='fixed w-full'>
+      <div className={
+        classNames(
+          'w-full transition border-b bg-white', 
+          {'translate-y-20': distToTop <= 50}, 
+          {'-translate-y-20': distToTop > 50}, 
+        )}>
+          <LowerNav />
+      </div>
+      <div className='flex w-full h-20 items-center gap-6 px-6 bg-white -translate-y-20'>
         <Logo/>
         <SearchBar />
         <PersonalPanel />
         <CartButton />
       </div>
-      {isAtTop &&
-        <LowerNav />
-      }
     </div>
   )
 }
