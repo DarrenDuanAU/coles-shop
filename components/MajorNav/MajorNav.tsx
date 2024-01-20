@@ -26,8 +26,8 @@ const MajorNav = () => {
       <div className={
         classNames(
           'w-full transition border-b bg-white', 
-          {'translate-y-20': distToTop <= 50}, 
-          {'-translate-y-20': distToTop > 50}, 
+          {'translate-y-20': distToTop <= threshold}, 
+          {'translate-y-2': distToTop > threshold}, 
         )}>
           <LowerNav />
       </div>
